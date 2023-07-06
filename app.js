@@ -79,7 +79,7 @@
 //              <p>${data[i].price}</p>
 //              <p>${data[i].year}</p>
 //              <p>${data[i].color}</p>
-//         </div>       
+//         </div>
 //         `
 //         }
 //     }).catch((error) => {
@@ -105,38 +105,38 @@
 
 
 const movie = {
-    img: "https://kg.kinoafisha.info/bishkek/movies/8370880/",
-    name: 'Дочь',
-    year: 2022,
-    genre: 'Romantic',
-    country: "Kyrgyzstan",
-    price: '350 som',
-    director: 'Bakyt Osmonkanov'
+  img: "https://kg.kinoafisha.info/bishkek/movies/8370880/",
+  name: 'Дочь',
+  year: 2022,
+  genre: 'Romantic',
+  country: "Kyrgyzstan",
+  price: '350 som',
+  director: 'Bakyt Osmonkanov'
 
 }
 
 const movie2 = {
-    ...movie,
-    img: "http://www.manascinema.com/movies/2397",
-    name: 'Аяш 2',
-    genre: 'Comedy'
+  ...movie,
+  img: "http://www.manascinema.com/movies/2397",
+  name: 'Аяш 2',
+  genre: 'Comedy'
 }
 
 const movie3 = {
-    img: "https://broadway.kg/release/11.06.2023/61",
-    name: 'Мага Конул Бур',
-    year: 2023,
-    genre: 'Romantic',
-    country: "Kazakhstan",
-    price: '300 som',
-    director: 'Abdusaid Shahislamov'
+  img: "https://broadway.kg/release/11.06.2023/61",
+  name: 'Мага Конул Бур',
+  year: 2023,
+  genre: 'Romantic',
+  country: "Kazakhstan",
+  price: '300 som',
+  director: 'Abdusaid Shahislamov'
 }
 
 const movie4 = {
-    ...movie3,
-    img: "https://www.kinopoisk.ru/film/5296922/",
-    name: 'Джохан 2',
-    genre: 'Comedy'
+  ...movie3,
+  img: "https://www.kinopoisk.ru/film/5296922/",
+  name: 'Джохан 2',
+  genre: 'Comedy'
 }
 
 const movies = [movie, movie2, movie3, movie4];
@@ -144,19 +144,19 @@ const Comedy = [movie2, movie4];
 const Romantic = [movie, movie3];
 
 function fetchMovie(movieName) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            if(movieName == "movie") {
-                resolve(movies);
-            }else if(movieName == "Comedy"){
-                resolve(Comedy);
-            }else if(movieName == "Romantic"){
-                resolve(Romantic)
-            }else {
-                reject("Movie not found")
-            }
-        }, 2000);
-    });
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (movieName == "movie") {
+        resolve(movies);
+      } else if (movieName == "Comedy") {
+        resolve(Comedy);
+      } else if (movieName == "Romantic") {
+        resolve(Romantic)
+      } else {
+        reject("Movie not found")
+      }
+    }, 2000);
+  });
 }
 
 const input = document.getElementById('input')
@@ -164,12 +164,12 @@ const btn = document.getElementById('btn-s')
 const emptyDiv = document.getElementById('movie')
 
 btn.onclick = () => {
-    const name = input.value;
-    emptyDiv.innerHTML = "<h4>Searching ...</h4>"
-    const res = fetchMovie(name).then((data) => {
-        emptyDiv.innerHTML = "";
-        for (let i = 0; i < data.length; i++) {
-            emptyDiv.innerHTML += `
+  const name = input.value;
+  emptyDiv.innerHTML = "<h4>Searching ...</h4>"
+  const res = fetchMovie(name).then((data) => {
+    emptyDiv.innerHTML = "";
+    for (let i = 0; i < data.length; i++) {
+      emptyDiv.innerHTML += `
         <div>
             <img src="${data[i].img}" width="250px" height="200px" alt="" />
         </div>
@@ -180,13 +180,13 @@ btn.onclick = () => {
              <p>${data[i].country}</p>
              <p>${data[i].price}</p>
              <p>${data[i].director}</p>
-        </div>       
+        </div>
         `
-        }
-    }).catch((error) => {
-        emptyDiv.innerText = error
-    }).finally(() => {
-        input.value = ""
-    })
-    console.log(res);
+    }
+  }).catch((error) => {
+    emptyDiv.innerText = error
+  }).finally(() => {
+    input.value = ""
+  })
+  console.log(res);
 }
